@@ -16,7 +16,7 @@ function Userdetails(){
     }, [])
 
     async function getData(){
-        await axios.get(`https://manas-admin-system.herokuapp.com/getUsers`)
+        await axios.get(`/getUsers`)
         .then(res=>{
             if(res.data.msg.length === 0 ){
                 setHasUsers(false);
@@ -30,7 +30,7 @@ function Userdetails(){
     }
 
     function clickHandler(userId){
-        axios.post(`https://manas-admin-system.herokuapp.com/delete`,{
+        axios.post(`/delete`,{
             id:userId,
         }).then((res)=>{
             alert.success("Successfully Deleted the Record");         

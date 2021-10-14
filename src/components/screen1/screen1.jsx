@@ -30,7 +30,7 @@ function Screen1(){
         event.preventDefault();
         console.log(loginDetails);
 
-        axios.post(`https://manas-admin-system.herokuapp.com/user/login`,{
+        axios.post(`/user/login`,{
             user:loginDetails
         }).then((res)=>{
             localStorage.setItem('token', res.data.token);
@@ -38,11 +38,11 @@ function Screen1(){
                 history.push("/dashboard");
             }, 1000);
         }).catch((error)=>{
-            // if(error.response.status===404 || error.response.status===401){
-            //     alert.error(error.response.data.msg);
-            // }else if(error.response.status===500 ){
-            //     alert.error("Internal Server Error");
-            // }
+            if(error.response.status===404 || error.response.status===401){
+                alert.error(error.response.data.msg);
+            }else if(error.response.status===500 ){
+                alert.error("Internal Server Error");
+            }
             console.log(error.response)
         })
 

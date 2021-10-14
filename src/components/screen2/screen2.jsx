@@ -18,10 +18,11 @@ function Screen2(){
     }, []);
 
     async function checkLogin(){
-        await axios.post(`https://manas-admin-system.herokuapp.com/validate`,{
+        await axios.post(`/validate`,{
             token:localStorage.getItem("token"),
         }).then(res=>{
             if(res.status === 200){
+                localStorage.setItem('token', res.data.newToken);
                 setTimeout(() => {
                     setLoading(false);              
                 }, 1500);

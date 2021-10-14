@@ -66,7 +66,7 @@ function AddUserTab(){
         }else if(numLengthError){
             alert.error("Invalid Mobile No.")
         }else{
-            await axios.post(`https://manas-admin-system.herokuapp.com/createUser`,{
+            await axios.post(`/createUser`,{
                 user:userDetails
             }).then((res)=>{
                 alert.success("User added Successfully.");
